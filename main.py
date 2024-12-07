@@ -1,39 +1,25 @@
-import csv
 from time import sleep
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+from src.driver_manager import initialize_driver
+from src.scraper import get_day, get_balls, click_next_button
+from src.file_handler import write_to_csv
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--start-maximized")
+def main():
+    driver = initialize_driver()
+    driver.get('https://loterias.caixa.gov.br/Paginas/Mega-Sena.aspx')
+    sleep(20)
 
-driver = webdriver.Remote(
-    command_executor='http://localhost:4444', options=chrome_options)
-driver.get('https://loterias.caixa.gov.br/Paginas/Mega-Sena.aspx')
-sleep(10)
-
-with open('Data.csv', 'w', newline='') as csvfile:
-    csvwriter = csv.writer(csvfile)
-
+    data = []
     for _ in range(10):
-        xpathBalls = []
-        day = '//*[@id="wp_resultados"]/div[1]/div/h2/span'
-        buttonXpath = '//*[@id="wp_resultados"]/div[1]/div/div[2]/ul/li[2]/a'
-        day_element = driver.find_element(By.XPATH, day)
-        day_value = day_element.text
+        concurso, day = get_day(driver)  # Agora retorna dia e concurso
+        balls = get_balls(driver)
+        
+        # Organiza os dados separando Concurso e Dia
+        data.append([concurso, day] + balls)
+        click_next_button(driver)
 
-        for i in range(0, 5):
-            xpathBalls.append(f'//*[@id="ulDezenas"]/li[{i+1}]')
+    write_to_csv(data)
 
-        balls = []
-        for xpath in xpathBalls:
-            ball_element = driver.find_element(By.XPATH, xpath)
-            ball_value = ball_element.text
-            balls.append(ball_value)
+    driver.quit()
 
-        csvwriter.writerow([day_value] + balls)
-
-        button = driver.find_element(By.XPATH, buttonXpath)
-        button.click()
-        sleep(2)
-
-driver.quit()
+if __name__ == "__main__":
+    main()

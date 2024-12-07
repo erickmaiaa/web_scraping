@@ -6,7 +6,7 @@ This is a learning project focused on practicing Web Scraping, a technique used 
 
 ## Objective
 
-The main goal of this project is to demonstrate how to efficiently and automatically collect data from the web using popular Python libraries such as BeautifulSoup and Scrapy.
+The main goal of this project is to demonstrate how to collect data from the web.
 
 ## Features
 
@@ -29,7 +29,7 @@ The main goal of this project is to demonstrate how to efficiently and automatic
 
 2. Select the webdriver of your preference and download it. For example, I used the Chrome driver.
 
-3. Download the webdriver for your preferred browser version and place it in your project directory. You can find the Chrome driver at [ChromeDriver Downloads](https://chromedriver.chromium.org/downloads).
+3. Download the webdriver for your preferred browser version and place it in your project directory. You can find the Chrome driver at [ChromeDriver Downloads](https://googlechromelabs.github.io/chrome-for-testing/).
 
 4. Execute the chromedriver in your terminal.
 
@@ -50,5 +50,9 @@ The main goal of this project is to demonstrate how to efficiently and automatic
 **Enjoy scraping the web!**
 
 <div align="center">
-<img src="./WebScraping.gif" width="700" height="400"/>
+<video width="700" height="400" controls>
+<source src="WebScraping.mp4" type="video/mp4">
+</video>
 </div>
+
+**Note:** This project uses Selenium and other web scraping techniques to extract data from websites. While Selenium is effective for web scraping dynamic content, it can be slower compared to other methods like BeautifulSoup or Scrapy, especially for static sites. This approach has been chosen for educational purposes to demonstrate automation, but for faster data extraction, consider using APIs or libraries like BeautifulSoup (for static HTML) or Scrapy.

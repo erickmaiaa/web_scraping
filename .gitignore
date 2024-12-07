@@ -4,3 +4,4 @@ Scripts
 pyvenv.cfg
 Data.csv
 chromedriver.exe
+__pycache__/
