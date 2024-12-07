@@ -49,10 +49,4 @@ The main goal of this project is to demonstrate how to collect data from the web
 
 **Enjoy scraping the web!**
 
-<div align="center">
-<video width="700" height="400" controls>
-<source src="WebScraping.mp4" type="video/mp4">
-</video>
-</div>
-
 **Note:** This project uses Selenium and other web scraping techniques to extract data from websites. While Selenium is effective for web scraping dynamic content, it can be slower compared to other methods like BeautifulSoup or Scrapy, especially for static sites. This approach has been chosen for educational purposes to demonstrate automation, but for faster data extraction, consider using APIs or libraries like BeautifulSoup (for static HTML) or Scrapy.
